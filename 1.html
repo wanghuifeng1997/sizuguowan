@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>摇号系统</title>
+</head>
+
+<body>
+    <samp id="licensePlate"></samp>
+    <br>
+    <button id="shakeBtn" value="摇号" type="button"> 摇号</button>
+
+    <Script>
+        let a = 1;
+        let shakeBtn = document.querySelector('#shakeBtn'),
+            licensePlate = document.querySelector('#licensePlate')
+        let ran = (n, m) => Math.round(Math.random() * (m - n) + n);
+       
+        shakeBtn.onclick = function () {
+            if (a > 3) {
+            alert("对不起只能摇号3次");
+        }
+            let result = '';
+            // 先生京啥
+            let area1 = "ABCDEFGHKL";
+            result += '京';
+            result += area1.charAt(ran(0, 8));
+            let area2 = 'ASDFGHJKLXCVBNMQWERTYUIOP123456890';
+            for (let i = 0; i < 5; i++) {
+                result += area2.charAt(ran(0, 5));
+            }
+            a++;
+            licensePlate.innerHTML = result;
+        }
+    </Script>
+</body>
+
+</html>
